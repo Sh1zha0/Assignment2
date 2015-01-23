@@ -1,0 +1,10 @@
+class block
+{
+  block()
+  {
+    
+  }
+  
+}
+
+
