@@ -14,8 +14,9 @@ class Player
   float s=1.1;
   boolean alive;
   float ellapse=0.0f;
-  float fireRate=5.0f;
+  float fireRate=10.0f;
   float toPass=1.0f/fireRate;
+  float timeDelta=1.0f/60.0f;
   
     
   Player()
@@ -54,6 +55,7 @@ class Player
   
   void update()
   {
+    ellapse+=timeDelta;
     float lx,ly;
     lx = sin(theta);
     ly = cos(theta);
@@ -100,15 +102,15 @@ class Player
     if (checkKey(button1))
     {
       println("Player " + index + " button 1");
-      //if(ellapse>toPass)
-      //{
+      if(ellapse>toPass)
+      {
       Bullet bullet = new Bullet();
       bullet.pos.x = pos.x;
       bullet.pos.y = pos.y;
       bullet.theta = theta;
       players.add(bullet);
       ellapse=0.0f;
-      //}
+      }
       
     }
     if (checkKey(button2))

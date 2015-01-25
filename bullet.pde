@@ -4,6 +4,8 @@ class Bullet extends Player
   float timeDelta = 1.0f / 60.0f;
   float toLive = 5.0f;
   float x,y;
+  float fireRate=1000f;
+  float toPass=1.0f/fireRate;
   //PVector move;
   
   Bullet()
