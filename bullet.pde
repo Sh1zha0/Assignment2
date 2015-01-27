@@ -56,7 +56,7 @@ class Bullet extends Player
     rotate(theta);
     stroke(0);
     //rect(-10,10,500,500);
-    ellipse(0,-14,5,5);
+    ellipse(0,-14,10,10);
     popMatrix();
   }
 }

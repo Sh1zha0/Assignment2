@@ -17,6 +17,8 @@ class Player
   float fireRate=10.0f;
   float toPass=1.0f/fireRate;
   float timeDelta=1.0f/60.0f;
+  float lx,ly;
+  int i;
   
     
   Player()
@@ -61,23 +63,29 @@ class Player
     ly = cos(theta);
     if (checkKey(up))
     {
-      if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)
-      {
+      //if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)
+      //{
       pos.x += lx;
       pos.y -= ly;
-      }
+      /*}
       else
       {
       pos.y +=ly*2;
       pos.x -=lx*2;
-      }
+      }*/
     }
     if (checkKey(down))
     {
       if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)
       {
+      /*for(i=0;i<block.size();i++)
+      {
+        if(dist(pos.x,0,block[i].x,0)>0&&dist(0,pos.y,0,block[i].y)>block[i].w)
+      {*/
       pos.y +=ly;
       pos.x -=lx;
+      /*}
+      }*/
       }
       else
       {
@@ -146,8 +154,33 @@ class Player
     fill(200,200,155);
     arc (0, 5, 8, 20, PI, PI*2); 
     rect(-1,-15,3,10);
-    
-    
     popMatrix();
-  }  
+}  
+
+    /*boolean collides(block b)
+  {
+    // Its easier to check if they DONT colide
+    if (b.x + b.w < pos.x)
+    {
+      return false;
+    }
+    if (b.x > pos.x + 20)
+    {
+      return false;
+    } 
+    
+    if (b.y > pos.y +20)
+    {
+      return false;
+    }
+    
+    if (b.y + b.h < pos.y)
+    {
+      return false;
+    }
+    // If none of the above then there is a collision
+    return true;
+    
+  }*/
+  
 }
