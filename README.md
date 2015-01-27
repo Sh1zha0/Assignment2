@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Object Oriented Programming Assignments 2014/2015
 
 ## Assignment 2
@@ -57,3 +58,7 @@ Rubric
 | 2.2 | The project looks so so, but is pretty basic. There should be some animation or gameplay but significant issues that you couldn't resolve. You may have used sprites instead of drawing everything. All the movement and animation code will be pretty basic for example colours changing each frame or movement controlled by variables that just update each frame. Little or no control code. There is not much code, maybe a page or two. Example: A basic Pong game |
 | Pass | All code in one file. Around a hundred lines of code. Looks like it could have been completed in an hour or two. Mostly drawing code, little or no controling code. Little or no functionality. Lots of code acquired from other sources. Example: An incomplete Pong game|
 | Fail | Something very basic that looks like it could have been completed in an hour. Just drawing code, no control code. The assignment has no interactivity. Significant unaddressed technical problems  |
+=======
+# Assignment2
+oop assignment
+>>>>>>> 32b89385242e7b54df8d2bc6d58be8e4e39f8a05
