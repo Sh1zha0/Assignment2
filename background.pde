@@ -11,8 +11,7 @@ class block extends Player
   
   void display()
   {
-    stroke(0);
-    fill(0);
+    fill(255);
     rect(x,y,w,h);
   }
 }

@@ -61,6 +61,7 @@ class Player
     float lx,ly;
     lx = sin(theta);
     ly = cos(theta);
+    
     if (checkKey(up))
     {
       //if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)

@@ -9,6 +9,8 @@ import ddf.minim.*;
     See: https://github.com/skooter500/DT228-OOP 
 */
 PImage page;
+PImage help;
+PImage over;
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
 int stage=0;
@@ -20,6 +22,8 @@ void setup()
 {
   size(700, 500);
   page=loadImage("start.jpg");
+  help=loadImage("help.jpg");
+  over=loadImage("overjpg");
   setUpPlayerControllers();
   minim=new Minim(this);
   back=minim.loadFile("back.mp3");
@@ -32,16 +36,22 @@ void setup()
 }
 Player[] gameObjects;
 ArrayList<block> objects = new ArrayList<block>();
+
+
 void draw()
 {
   background(255);
   if(stage==0)
   {
     image(page,0,0,700,500);
+    if(keyPressed&&key=='q')
+    {
+      stage=1;
+    }
   }
   if(stage==1)
   {
-  //background(0);
+  background(0);
   for(int i=0;i<players.size();i++)
   {
     players.get(i).update();
@@ -54,6 +64,22 @@ void draw()
   }
   
   }
+  if(stage==2)
+  {
+    image(help,0,0,700,500);
+    if(keyPressed&&key=='q')
+    {
+      stage=1;
+    }
+  if(stage==3)
+  {
+    image(over,0,0,700,500);
+    if(keyPressed&&key=='q')
+    {
+      stage=1;
+    }
+  }
+}
 }
 
 void backg()
@@ -86,13 +112,13 @@ void backg()
     } 
     if(i>3&&i<7)
     {
-    block block = new block(random(50,630),random(120,170), random(12,15),random(100,150));
+    block block = new block(random(80,580),random(120,170), random(12,15),random(100,150));
     players.add(block);
     objects.add(block);
     }
     if(i>6)
     {
-    block block = new block(random(50,550),random(200,380), random(100,150),random(12,15));
+    block block = new block(random(80,550),random(200,380), random(100,150),random(12,15));
     players.add(block);
     objects.add(block);
     }
@@ -170,4 +196,5 @@ void setUpPlayerControllers()
       }  
     }
   }*/
+  
 }

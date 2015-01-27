@@ -57,6 +57,17 @@ class Bullet extends Player
     stroke(0);
     //rect(-10,10,500,500);
     ellipse(0,-14,10,10);
+    for(int i = 0 ; i < players.size() - 1 ; i ++)
+  {
+//stage=1;
+   Player p1 = players.get(i);
+    float dist = PVector.dist(p1.pos, pos);
+      if (dist < 10)
+      {
+        stage=0;
+      }  
+    }
     popMatrix();
+    
   }
-}
+ }
