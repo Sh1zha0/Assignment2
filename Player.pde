@@ -18,7 +18,7 @@ class Player
   float toPass=1.0f/fireRate;
   float timeDelta=1.0f/60.0f;
   float lx,ly;
-  int i;
+  int i,counter;
   
     
   Player()
@@ -57,6 +57,7 @@ class Player
   
   void update()
   {
+    counter=1;
     ellapse+=timeDelta;
     float lx,ly;
     lx = sin(theta);
@@ -66,8 +67,23 @@ class Player
     {
       //if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)
       //{
-      pos.x += lx;
-      pos.y -= ly;
+      
+    for (int j = 0 ; j < objects.size() ; j ++)
+    {
+      block block1 = objects.get(j);
+      if (collides(block1))
+      {
+       pos.y +=ly*5;
+       pos.x -=lx*5;
+       counter=0;
+        //printMessage("Rectangle " + i + " collides with " + " rect " + j);
+      } 
+    }
+    if(counter==1)
+      {
+        pos.y -=ly;
+        pos.x +=lx;
+      }
       /*}
       else
       {
@@ -77,21 +93,32 @@ class Player
     }
     if (checkKey(down))
     {
-      if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)
+      /*if(pos.x<width-12&&pos.x>12&&pos.y<height-12&&pos.y>12)
       {
-      /*for(i=0;i<block.size();i++)
-      {
-        if(dist(pos.x,0,block[i].x,0)>0&&dist(0,pos.y,0,block[i].y)>block[i].w)
-      {*/
+      
       pos.y +=ly;
       pos.x -=lx;
-      /*}
-      }*/
       }
       else
       {
       pos.y -=ly*2;
       pos.x +=lx*2;
+      }*/
+      for (int j = 0 ; j < objects.size() ; j ++)
+    {
+      block block1 = objects.get(j);
+      if (collides(block1))
+      {
+       pos.y -=ly*5;
+       pos.x +=lx*5;
+       counter=0;
+        //printMessage("Rectangle " + i + " collides with " + " rect " + j);
+      } 
+    }
+    if(counter==1)
+      {
+        pos.y +=ly;
+        pos.x -=lx;
       }
     }
     if (checkKey(left))
@@ -158,30 +185,30 @@ class Player
     popMatrix();
 }  
 
-    /*boolean collides(block b)
+    boolean collides(block b)
   {
     // Its easier to check if they DONT colide
-    if (b.x + b.w < pos.x)
+    if (pos.x<b.x-10)
     {
       return false;
     }
-    if (b.x > pos.x + 20)
+    if (pos.x>b.x+b.w+10)
     {
       return false;
     } 
     
-    if (b.y > pos.y +20)
+    if (pos.y<b.y-10)
     {
       return false;
     }
     
-    if (b.y + b.h < pos.y)
+    if (pos.y>b.y+b.h+10)
     {
       return false;
     }
     // If none of the above then there is a collision
     return true;
     
-  }*/
+  }
   
 }

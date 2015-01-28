@@ -10,20 +10,23 @@ import ddf.minim.*;
 */
 PImage page;
 PImage help;
-PImage over;
+PImage over1;
+PImage over2;
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
 int stage=0;
 AudioPlayer shoot;
 AudioPlayer back;
 Minim minim;
+int life;
 
 void setup()
 {
   size(700, 500);
   page=loadImage("start.jpg");
   help=loadImage("help.jpg");
-  over=loadImage("overjpg");
+  over1=loadImage("p1.jpg");
+  over2=loadImage("p2.jpg");
   setUpPlayerControllers();
   minim=new Minim(this);
   back=minim.loadFile("back.mp3");
@@ -40,6 +43,7 @@ ArrayList<block> objects = new ArrayList<block>();
 
 void draw()
 {
+  frameRate(60);
   background(255);
   if(stage==0)
   {
@@ -47,6 +51,10 @@ void draw()
     if(keyPressed&&key=='q')
     {
       stage=1;
+    }
+    if(keyPressed&&key=='r')
+    {
+      stage=2;
     }
   }
   if(stage==1)
@@ -63,6 +71,8 @@ void draw()
     shoot.rewind();
   }
   
+  println(frameCount);
+  
   }
   if(stage==2)
   {
@@ -71,15 +81,32 @@ void draw()
     {
       stage=1;
     }
+  }
   if(stage==3)
   {
-    image(over,0,0,700,500);
+    image(over1,0,0,width,height);
     if(keyPressed&&key=='q')
     {
-      stage=1;
+      stage=0;
     }
+    /*for (int i=0; i<objects.size(); i++)
+    {
+    objects.remove(i);
+    }*/ 
   }
-}
+  if(stage==4)
+  {
+    image(over2,0,0,width,height);
+    /*for (int i=0; i<objects.size(); i++)
+    {
+    objects.remove(i);
+    } */
+    if(keyPressed&&key=='q')
+    {
+      stage=0;
+    }
+    
+  }
 }
 
 void backg()
@@ -88,37 +115,37 @@ void backg()
   {
     if(i==0)
     {
-    block block = new block(20,100, 660,12);
+    block block = new block(20,100, 660,12,255,233,255);
     players.add(block);
     objects.add(block);
     } 
     if(i==1)
     {
-    block block = new block(20,100, 12,300);
+    block block = new block(20,100, 12,300,255,233,255);
     players.add(block);
     objects.add(block);
     } 
     if(i==2)
     {
-    block block = new block(20,400, 660,12);
+    block block = new block(20,400, 660,12,255,233,255);
     players.add(block);
     objects.add(block);
     } 
     if(i==3)
     {
-    block block = new block(670,100, 12,300);
+    block block = new block(670,100, 12,300,255,233,255);
     players.add(block);
     objects.add(block);
     } 
     if(i>3&&i<7)
     {
-    block block = new block(random(80,580),random(120,170), random(12,15),random(100,150));
+    block block = new block(random(80,580),random(120,170), random(5,7),random(100,150),(int)random(0,255),(int)random(0,255),(int)random(0,255));
     players.add(block);
     objects.add(block);
     }
     if(i>6)
     {
-    block block = new block(random(80,550),random(200,380), random(100,150),random(12,15));
+    block block = new block(random(80,520),random(200,380), random(100,150),random(5,7),(int)random(0,255),(int)random(0,255),(int)random(0,255));
     players.add(block);
     objects.add(block);
     }
